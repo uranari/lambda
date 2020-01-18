@@ -21,7 +21,8 @@ def lambda_handler(event, context):
         message = "Unknown event with " + event_name
 
     headers = {'Content-Type': 'text/plain'}
+    data = '{"text": "' + message + '"}'
 
     response = requests.post(
-        SLACK_WEBHOOK_URL, headers=headers, data=message)
+        SLACK_WEBHOOK_URL, headers=headers, data=data)
     print(str(response.status_code))
